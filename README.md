@@ -14,3 +14,8 @@ This repository contains the infrastructure and configuration for a secured, con
 1. The server is hardened using **UFW** to only allow specific traffic.
 2. The web service is deployed as a **Docker Container**, ensuring environment parity.
 3. Local DNS is configured to map the server IP to `olu.test` for professional access.
+## 🔒 Security & Encryption (SSL/TLS)
+* **Encryption:** Implemented SSL/TLS via a Self-Signed Certificate Authority (OpenSSL).
+* **Protocol:** Configured Nginx to support **TLSv1.3** on Port 443.
+* **Volume Mapping:** Securely injected certificates into Docker containers via volume mounts.
+* **Hardening:** Updated UFW Firewall rules to strictly allow encrypted traffic (HTTPS).
