@@ -19,3 +19,4 @@ This repository contains the infrastructure and configuration for a secured, con
 * **Protocol:** Configured Nginx to support **TLSv1.3** on Port 443.
 * **Volume Mapping:** Securely injected certificates into Docker containers via volume mounts.
 * **Hardening:** Updated UFW Firewall rules to strictly allow encrypted traffic (HTTPS).
+* **Intrusion Prevention:** Configured **Fail2Ban** to automatically mitigate SSH brute-force attacks
