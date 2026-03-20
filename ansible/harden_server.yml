@@ -1,0 +1,40 @@
+---
+- name: Hardening the Ubuntu Cloud Server
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  become: yes
+
+  tasks:
+    - name: Ensure UFW is installed
+      apt:
+        name: ufw
+        state: present
+
+    - name: Allow SSH through Firewall
+      ufw:
+        rule: allow
+        port: ssh
+
+    - name: Allow HTTP and HTTPS for our Web Site
+      ufw:
+        rule: allow
+        port: "{{ item }}"
+      loop:
+        - '80'
+        - '443'
+
+    - name: Enable UFW Firewall
+      ufw:
+        state: enabled
+
+    - name: Ensure Fail2Ban is installed and running
+      apt:
+        name: fail2ban
+        state: present
+
+    - name: Ensure Fail2Ban service is started
+      service:
+        name: fail2ban
+        state: started
+        enabled: yes
